@@ -7,7 +7,7 @@
 		<!-- This is the name of your mod. This will be used by tcli when building our Thunderstore package. -->
     <Product>SCP173</Product>
     <!-- Change to whatever version you're currently on. This will be used by tcli when building our Thunderstore package. -->
-    <Version>1.0.3</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <!-- Thunderstore CLI stuff -->
@@ -71,6 +71,11 @@
   <ItemGroup Condition="$(CI) == 'true'">
     <PackageReference Include="LethalCompany.GameLibs.Steam" Version="*-*" Publicize="true" PrivateAssets="all" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="LethalBestiary">
+      <HintPath>..\..\..\AppData\Roaming\r2modmanPlus-local\LethalCompany\profiles\Cod3r Test Pack\BepInEx\plugins\TheWeavers-LethalBestiary\LethalBestiary\LethalBestiary.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
   <!-- Allows us to use Rpc methods. See https://github.com/EvaisaDev/UnityNetcodePatcher -->
   <!-- This MSBuild option does not work in Visual Studio, using cli option for now
@@ -82,6 +87,6 @@
   </ItemGroup>
   -->
 	<Target Name="NetcodePatch" AfterTargets="PostBuildEvent">
-		<Exec Command="netcode-patch -uv 2022.3.62 -nv 1.12.0 -tv 1.0.0 &quot;$(TargetPath)&quot; @(ReferencePathWithRefAssemblies->'&quot;%(Identity)&quot;', ' ')"/>
+		<Exec Command="netcode-patch -uv 2022.3.62 -nv 1.12.0 -tv 1.0.0 &quot;$(TargetPath)&quot; @(ReferencePathWithRefAssemblies->'&quot;%(Identity)&quot;', ' ')" />
 	</Target>
 </Project>

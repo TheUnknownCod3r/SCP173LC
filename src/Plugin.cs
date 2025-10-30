@@ -3,12 +3,13 @@ using BepInEx;
 using BepInEx.Logging;
 using System.IO;
 using SCP173.Configuration;
-using LethalLib.Modules;
+using LethalBestiary.Modules;
 using UnityEngine;
 
 namespace SCP173 {
 
     [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
+    [BepInDependency(LethalBestiary.Plugin.ModGUID)]
     public class Plugin : BaseUnityPlugin {
         internal static new ManualLogSource Logger = null!;
         internal static PluginConfig BoundConfig { get; private set; } = null!;
